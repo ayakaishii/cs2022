@@ -30,11 +30,19 @@ func :: String -> String
 -- func  = showInt . (2*) . readInt
 
 -- func input = case readInt input of
-    -- n -> showInt (2 * n)
+--     n -> showInt (2 * n)
 
 -- func input = case readInt input of
 --     n -> showInt (n `mod` 5)
 
-func input = case words input of
-        s:_ -> unlines [concat (replicate 3 s)]
-        [] -> error "invalid input"
+-- func input = case words input of
+--         s:_ -> unlines [concat (replicate 3 s)]
+--         [] -> error "invalid input"
+
+--func input = case map words (lines input) of
+--    [[s]] -> unlines [[s !! 2]]
+
+func :: String -> String
+func input = case map (map readInt . wordr)(lines input) of
+        _ -> unlines []
+
